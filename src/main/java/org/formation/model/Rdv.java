@@ -3,19 +3,26 @@ package org.formation.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.springframework.data.annotation.Id;
 
 @Entity
 public class Rdv {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@OneToMany
+	@ManyToOne
+	@JoinColumn(name= "join_patient_id")
 	private Patient patients;
-	@OneToMany
+	@ManyToOne
+	@JoinColumn(name= "join_praticien_id")
 	private Praticien praticien;
-	@OneToMany
+	@ManyToOne
+	@JoinColumn(name= "join_date_id")
 	private Planning date;
 	private String motif;
 	private String lieu;
@@ -23,7 +30,6 @@ public class Rdv {
 	public Rdv() {	
 	}
 	
-
 	public Rdv(Integer id, Patient patients, Praticien praticien, Planning date, String motif, String lieu) {
 		super();
 		this.id = id;
@@ -83,14 +89,11 @@ public class Rdv {
 		this.lieu = lieu;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Rdv [id=" + id + ", patients=" + patients + ", praticien=" + praticien + ", date=" + date + ", motif="
 				+ motif + ", lieu=" + lieu + "]";
 	}
 	
-
-
 
 }

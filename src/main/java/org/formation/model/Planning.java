@@ -3,8 +3,12 @@ package org.formation.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 public class Planning {
-	
+	@OneToOne
+	@JoinColumn(name= "praticien_id")
 	private Praticien praticien;
 	private ArrayList disponibilite;
 	
