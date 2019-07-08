@@ -67,6 +67,7 @@ pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
 pom.xml.next
+pom.xml
 release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
@@ -74,3 +75,5 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 # End of https://www.gitignore.io/api/java,maven,angular,java-web
+
+*.properties
