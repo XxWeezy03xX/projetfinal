@@ -3,7 +3,10 @@ package org.formation.model;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Praticien extends User {
@@ -11,7 +14,6 @@ public class Praticien extends User {
 	@Enumerated(EnumType.ORDINAL)
 	private Roles role;
 	private Adresse lieux[];
-	private EMotif motif;
 	private String specialites[];
 	private String presentation; 
 	private String moyen_paiement;
@@ -20,6 +22,12 @@ public class Praticien extends User {
 	@OneToMany
 	@Enumerated(EnumType.STRING)
 	private EMotif motifs[];
+	@OneToOne
+	@JoinColumn(name= "planning_id")
+	private Planning planning; 
+	@OneToMany
+	@JoinColumn(name = "rdv")
+	private Rdv rdv; 
 	
 	
 	public Praticien() {
@@ -38,12 +46,23 @@ public class Praticien extends User {
 	public void setLieux(Adresse[] lieux) {
 		this.lieux = lieux;
 	}
-	public EMotif getMotif() {
-		return motif;
+	
+	public Planning getPlanning() {
+		return planning;
 	}
-	public void setMotif(EMotif motif) {
-		this.motif = motif;
+
+	public void setPlanning(Planning planning) {
+		this.planning = planning;
 	}
+
+	public Rdv getRdv() {
+		return rdv;
+	}
+
+	public void setRdv(Rdv rdv) {
+		this.rdv = rdv;
+	}
+
 	public String[] getSpecialites() {
 		return specialites;
 	}
