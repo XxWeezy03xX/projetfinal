@@ -13,6 +13,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import org.formation.model.view.JsonViews;
+
 import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -40,8 +42,6 @@ public abstract class User
 	private String username;
 	private String password;
 	private boolean enable;
-	@OneToMany(mappedBy="user", fetch= FetchType.LAZY)
-	private List<UserRole> role;
 	@Version
 	private Integer version;
 	
@@ -126,14 +126,6 @@ public abstract class User
 
 	public void setEnable(boolean enable) {
 		this.enable = enable;
-	}
-
-	public List<UserRole> getRole() {
-		return role;
-	}
-
-	public void setRole(List<UserRole> role) {
-		this.role = role;
 	}
 
 	@Override
