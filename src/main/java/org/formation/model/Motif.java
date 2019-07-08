@@ -1,5 +1,5 @@
 package org.formation.model;
 
-public enum NomSpecialite {
+public class Motif {
 
 }
