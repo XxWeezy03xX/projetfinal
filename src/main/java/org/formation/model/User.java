@@ -1,21 +1,17 @@
 package org.formation.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
 import javax.persistence.Version;
+import javax.validation.constraints.Email;
 
 import org.formation.model.view.JsonViews;
-
-import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -34,6 +30,7 @@ public abstract class User
 	private String nom;
 	@JsonView(JsonViews.Common.class)
 	private String prenom;
+	@Email(message = "Email should be valid")
 	private String email;
 	@JsonView(JsonViews.Common.class)
 	private Adresse adresse;
