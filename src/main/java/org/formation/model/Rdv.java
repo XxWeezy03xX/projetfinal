@@ -89,11 +89,4 @@ public class Rdv {
 		this.lieu = lieu;
 	}
 
-	@Override
-	public String toString() {
-		return "Rdv [id=" + id + ", patients=" + patients + ", praticien=" + praticien + ", date=" + date + ", motif="
-				+ motif + ", lieu=" + lieu + "]";
-	}
-	
-
 }
