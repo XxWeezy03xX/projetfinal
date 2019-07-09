@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.formation.model.Patient;
+import org.formation.model.view.JsonViews;
 import org.formation.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -28,13 +29,21 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
 @RequestMapping("/rest/patient")
+@CrossOrigin(origins="*")
 public class PatientRestController {
 	
 	@Autowired
 	private PatientRepository patientRepository;
 	
+	@JsonView(JsonViews.Common.class)
 	@GetMapping(value= {"", "/"})
 	public ResponseEntity<List<Patient>> findAll(){
+		return list();
+	}
+	
+        @JsonView(JsonViews.Common.class)
+	@GetMapping(value = { "/rdv" })
+	private ResponseEntity<List<Patient>> findAllWithRdv() {
 		return list();
 	}
 	
@@ -56,10 +65,18 @@ public class PatientRestController {
 	}
 	
 
+    @JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
 	public ResponseEntity<Patient> findAllWithId(@PathVariable(name = "id") Integer id) {
 		return findPatientById(id);
 	}
+ 
+    @JsonView(JsonViews.Common.class)
+    @GetMapping("/{id}/rdv")
+    public ResponseEntity<Patient> findByIdWithRdv(@PathVariable(name="id") Integer id) {
+        return findPatientById(id);
+    }
+
 
 
 	private ResponseEntity<Patient> findPatientById(Integer id) {
