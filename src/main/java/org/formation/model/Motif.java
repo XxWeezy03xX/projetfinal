@@ -1,5 +1,8 @@
 package org.formation.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +18,7 @@ public class Motif {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	private Enum<EMotif> motif;
+	private List<Motif> motifs = new ArrayList<Motif>();
 	private Integer prix;
 	@ManyToOne
 	@JoinColumn(name = "motif_praticien")
@@ -25,11 +28,13 @@ public class Motif {
 	private Rdv rdv;
 	
 	
-	public Enum<EMotif> getMotif() {
-		return motif;
+	public List<Motif> getMotifs() {
+		return motifs;
 	}
-	public void setMotif(Enum<EMotif> motif) {
-		this.motif = motif;
+
+
+	public void setMotifs(List<Motif> motifs) {
+		this.motifs = motifs;
 	}
 	public Integer getPrix() {
 		return prix;
