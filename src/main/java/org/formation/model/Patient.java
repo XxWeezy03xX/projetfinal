@@ -16,7 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @DiscriminatorValue("patient")
-public class Patient {
+public class Patient extends User {
 	
 	@Enumerated(EnumType.ORDINAL)
 	private Roles role;
@@ -31,6 +31,13 @@ public class Patient {
 	private List<Rdv> listesRdv;
 	
 	
+	
+	
+	public Patient() {
+	super();
+	
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -87,6 +94,14 @@ public class Patient {
 
 	public void setSecu(Integer secu) {
 		this.secu = secu;
+	}
+
+	public List<Rdv> getListesRdv() {
+		return listesRdv;
+	}
+
+	public void setListesRdv(List<Rdv> listesRdv) {
+		this.listesRdv = listesRdv;
 	}
 	
 	
