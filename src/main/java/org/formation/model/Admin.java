@@ -16,6 +16,4 @@ public class Admin
 		this.role = role;
 	}
 	
-	
-
 }
