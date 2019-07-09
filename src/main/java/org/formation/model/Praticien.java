@@ -1,5 +1,7 @@
 package org.formation.model;
 
+import java.util.ArrayList;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -14,14 +16,14 @@ public class Praticien extends User {
 	@Enumerated(EnumType.ORDINAL)
 	private Roles role;
 	private Adresse lieux[];
-	private String specialites[];
+	private ArrayList<String> specialites = new ArrayList<>();
 	private String presentation; 
 	private String moyen_paiement;
 	private String avis;
 	private Integer note;
 	@OneToMany
-	@Enumerated(EnumType.STRING)
-	private EMotif motifs[];
+	@Enumerated(EnumType.ORDINAL)
+	private ArrayList<Motif> motifs;
 	@OneToOne
 	@JoinColumn(name= "planning_id")
 	private Planning planning; 
@@ -63,15 +65,19 @@ public class Praticien extends User {
 		this.rdv = rdv;
 	}
 
-	public String[] getSpecialites() {
-		return specialites;
-	}
-	public void setSpecialites(String[] specialites) {
-		this.specialites = specialites;
-	}
 	public String getPresentation() {
 		return presentation;
 	}
+	
+
+	public ArrayList<String> getSpecialites() {
+		return specialites;
+	}
+
+	public void setSpecialites(ArrayList<String> specialites) {
+		this.specialites = specialites;
+	}
+
 	public void setPresentation(String presentation) {
 		this.presentation = presentation;
 	}
@@ -93,13 +99,17 @@ public class Praticien extends User {
 	public void setNote(Integer note) {
 		this.note = note;
 	}
-	public EMotif[] getMotifs() {
+
+	public ArrayList<Motif> getMotifs() {
 		return motifs;
 	}
-	public void setMotifs(EMotif[] motifs) {
+
+	public void setMotifs(ArrayList<Motif> motifs) {
 		this.motifs = motifs;
 	}
+
 	
 	
+		
 
 }
