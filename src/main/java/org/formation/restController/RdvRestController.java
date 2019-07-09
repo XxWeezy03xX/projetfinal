@@ -57,7 +57,7 @@ public class RdvRestController {
 		}
 		rdvRepository.save(rdv);
 		HttpHeaders headers = new HttpHeaders();
-		URI uri = ucb.path("/rest/soldat/{id}").buildAndExpand(rdv.getId()).toUri();
+		URI uri = ucb.path("/rest/rdv/{id}").buildAndExpand(rdv.getId()).toUri();
 		headers.setLocation(uri);
 		return new ResponseEntity<> (headers, HttpStatus.CREATED);
 	}
