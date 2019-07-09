@@ -23,14 +23,14 @@ public class Rdv {
 	private Praticien praticien;
 	@ManyToOne
 	@JoinColumn(name= "join_date_id")
-	private Planning date;
+	private Date date;
 	private Motif motif;
 	private Adresse lieu;
 	
 	public Rdv() {	
 	}
 	
-	public Rdv(Integer id, Patient patients, Praticien praticien, Planning date, Motif motif, Adresse lieu) {
+	public Rdv(Integer id, Patient patients, Praticien praticien, Date date, Motif motif, Adresse lieu) {
 		super();
 		this.id = id;
 		this.patients = patients;
@@ -65,12 +65,12 @@ public class Rdv {
 		this.praticien = praticien;
 	}
 
-	public Planning getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(Planning date) {
-		this.date = date;
+	public void setDate(Date date2) {
+		this.date = date2;
 	}
 
 	public Motif getMotif() {
