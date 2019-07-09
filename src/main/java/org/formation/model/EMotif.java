@@ -11,6 +11,24 @@ public enum EMotif {
 	private EMotif(String motif, Integer prix) {
 		this.motif = motif;
 		this.prix = prix;
+	}
+
+	public String getMotif() {
+		return motif;
+	}
+
+	public void setMotif(String motif) {
+		this.motif = motif;
+	}
+
+	public Integer getPrix() {
+		return prix;
+	}
+
+	public void setPrix(Integer prix) {
+		this.prix = prix;
 	} 
+	
+	
 	
 }
