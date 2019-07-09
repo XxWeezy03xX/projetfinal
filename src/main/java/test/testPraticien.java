@@ -1,10 +1,14 @@
 package test;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import org.formation.model.Adresse;
 import org.formation.model.EMotif;
 import org.formation.model.Motif;
+import org.formation.model.Patient;
 import org.formation.model.Praticien;
+import org.formation.model.Rdv;
 
 public class testPraticien {
 
@@ -29,8 +33,12 @@ public class testPraticien {
 		
 		p.setPresentation("Bonjour, je suis Raphael Fosse, chirurgien dentiste !");
 		p.setMoyen_paiement("QUE DU CASH");
+		
+		Adresse a = new Adresse(24, "De paris", "93880", "Paris");
 		p.setAvis("Très bonne docteur");
 		p.setNote(7);
+		p.setAdresse(a);
+		
 //		System.out.println(p.getSpecialites());
 		
 		ArrayList<Motif> arm = new ArrayList<Motif>();
@@ -45,12 +53,23 @@ public class testPraticien {
 		arm.add(m);
 		p.setMotifs(arm);
 		
+		Patient p1 = new Patient();
+		p1.setPrenom("test patient");
+		p1.setNom("test patient non");
+		Date d = new SimpleDateFormat("yyyy/MM/dd").parse("2007/01/01");
+		p1.setNaissance();
+		
 //		System.out.println(p.getMotifs().get(0).getPrix());
 		
 		for (Motif x: p.getMotifs()) {
 			System.out.println(x.getPrix());
 			System.out.println(x.getMotif());
 		}
+		
+		Rdv r = new Rdv();
+		r.setPraticien(p);
+		r.setMotif(m1);
+		r.setLieu(a);
 	}
 
 }
