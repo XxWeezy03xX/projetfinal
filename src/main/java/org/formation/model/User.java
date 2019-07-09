@@ -54,14 +54,7 @@ public abstract class User
 	public void setCivilite(Civilite civilite) {
 		this.civilite = civilite;
 	}
-	
-	public Roles getRole() {
-		return role;
-	}
 
-	public void setRole(Roles role) {
-		this.role = role;
-	}
 
 	public String getNom() {
 		return nom;
