@@ -37,13 +37,11 @@ public void setDisponibilite(ArrayList disponibilite) {
 	this.disponibilite = disponibilite;
 }
 
-
 public Planning(Praticien praticien, ArrayList disponibilite) {
 	super();
 	this.praticien = praticien;
 	this.disponibilite = disponibilite;
 }
-
 
 @Override
 public int hashCode() {
@@ -75,8 +73,4 @@ public boolean equals(Object obj) {
 		return false;
 	return true;
 }
-
-
-
-
 }
