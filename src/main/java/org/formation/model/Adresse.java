@@ -80,16 +80,23 @@ public class Adresse {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((cp == null) ? 0 : cp.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+		result = prime * result + ((rdv == null) ? 0 : rdv.hashCode());
 		result = prime * result + ((rue == null) ? 0 : rue.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		result = prime * result + ((ville == null) ? 0 : ville.hashCode());
 		return result;
 	}
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -104,15 +111,30 @@ public class Adresse {
 				return false;
 		} else if (!cp.equals(other.cp))
 			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
 		if (numero == null) {
 			if (other.numero != null)
 				return false;
 		} else if (!numero.equals(other.numero))
 			return false;
+		if (rdv == null) {
+			if (other.rdv != null)
+				return false;
+		} else if (!rdv.equals(other.rdv))
+			return false;
 		if (rue == null) {
 			if (other.rue != null)
 				return false;
 		} else if (!rue.equals(other.rue))
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
 			return false;
 		if (ville == null) {
 			if (other.ville != null)
@@ -121,7 +143,7 @@ public class Adresse {
 			return false;
 		return true;
 	}
-	
+
 	
 
 }
