@@ -1,6 +1,8 @@
 package org.formation.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,10 +19,10 @@ public class Rdv {
 	@ManyToOne
 	@JoinColumn(name="rdv_patient")
 	private Patient patient;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "rdv_praticien")
 	private Praticien praticien;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "rdv_planning")
 	private Planning date;
 	@OneToOne
