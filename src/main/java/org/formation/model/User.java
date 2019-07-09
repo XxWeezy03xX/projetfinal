@@ -38,8 +38,6 @@ public abstract class User
 	@JsonView(JsonViews.Common.class)
 	private String prenom;
 
-	@Email(message = "Email should be valid")
-//	private String email;
 //	@Email(message = "Email should be valid")
 	private String email;
 
