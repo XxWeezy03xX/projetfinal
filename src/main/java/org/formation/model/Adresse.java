@@ -13,6 +13,7 @@ public class Adresse {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 	private Integer numero;
 	private String rue;
 	private String cp;
