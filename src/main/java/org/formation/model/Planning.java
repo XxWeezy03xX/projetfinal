@@ -3,16 +3,31 @@ package org.formation.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Generated;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderColumn;
+
+import org.hibernate.annotations.IndexColumn;
 
 @Entity
 public class Planning {
-	@OneToOne
-	@JoinColumn(name= "praticien_id")
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id; 
+	@OneToOne(mappedBy = "planning")
 	private Praticien praticien;
 	private ArrayList disponibilite;
+	
+	@OneToMany(mappedBy = "date")
+	private List<Rdv> rdv; 
 	
 	public Planning() {
 }
@@ -22,16 +37,13 @@ public Praticien getPraticien() {
 	return praticien;
 }
 
-
 public void setPraticien(Praticien praticien) {
 	this.praticien = praticien;
 }
 
-
 public ArrayList getDisponibilite() {
 	return disponibilite;
 }
-
 
 public void setDisponibilite(ArrayList disponibilite) {
 	this.disponibilite = disponibilite;

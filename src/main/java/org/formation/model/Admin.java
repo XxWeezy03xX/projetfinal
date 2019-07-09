@@ -1,19 +1,14 @@
 package org.formation.model;
 
-public class Admin 
-{
-	private  Roles role;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
-	public Roles getRole() {
-		return role;
-	}
+@Entity
+@DiscriminatorValue("admin")
+public class Admin extends User {
 
-	public void setRole(Roles role) {
-		this.role = role;
-	}
-
-	public Admin(Roles role) {
-		this.role = role;
+	public Admin() {
+		
 	}
 	
 }

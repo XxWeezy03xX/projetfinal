@@ -1,13 +1,49 @@
 package org.formation.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Adresse {
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer numero;
 	private String rue;
 	private String cp;
 	private String ville; 
+	@ManyToOne
+	@JoinColumn(name = "adresse_user")
+	private User user; 
+	@OneToOne(mappedBy = "lieu")
+	private Rdv rdv;
 	
 	
+	public User getUser() {
+		return user;
+	}
+
+
+	public Rdv getRdv() {
+		return rdv;
+	}
+
+
+	public void setRdv(Rdv rdv) {
+		this.rdv = rdv;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
 	public Integer getNumero() {
 		return numero;
 	}

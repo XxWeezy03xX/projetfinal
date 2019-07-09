@@ -1,45 +1,52 @@
 package org.formation.model;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
-import org.springframework.data.annotation.Id;
 
 @Entity
 public class Rdv {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	@ManyToOne
-	@JoinColumn(name= "join_patient_id")
-	private Patient patients;
+	@JoinColumn(name="rdv_patient")
+	private Patient patient;
 	@ManyToOne
-	@JoinColumn(name= "join_praticien_id")
+	@JoinColumn(name = "rdv_praticien")
 	private Praticien praticien;
 	@ManyToOne
-	@JoinColumn(name= "join_date_id")
-	private Date date;
+	@JoinColumn(name = "rdv_planning")
+	private Planning date;
+	@OneToOne
+	@JoinColumn(name = "rdv_motif")
 	private Motif motif;
+	@OneToOne
+	@JoinColumn(name = "rdv_lieu")
 	private Adresse lieu;
 	
 	public Rdv() {	
 	}
 	
-	public Rdv(Integer id, Patient patients, Praticien praticien, Date date, Motif motif, Adresse lieu) {
+	public Rdv(Integer id, Patient patient, Praticien praticien, Planning date, Motif motif, Adresse lieu) {
 		super();
 		this.id = id;
-		this.patients = patients;
+		this.patient = patient;
 		this.praticien = praticien;
 		this.date = date;
 		this.motif = motif;
 		this.lieu = lieu;
 	}
 
+
+	public void setDate(Planning date) {
+		this.date = date;
+	}
 
 	public Integer getId() {
 		return id;
@@ -49,12 +56,12 @@ public class Rdv {
 		this.id = id;
 	}
 
-	public Patient getPatients() {
-		return patients;
+	public Patient getPatient() {
+		return patient;
 	}
 
-	public void setPatients(Patient patients) {
-		this.patients = patients;
+	public void setPatient(Patient patient) {
+		this.patient = patient;
 	}
 
 	public Praticien getPraticien() {
@@ -65,11 +72,11 @@ public class Rdv {
 		this.praticien = praticien;
 	}
 
-	public Date getDate() {
+	public Planning getDate() {
 		return date;
 	}
 
-	public void setDate(Date date2) {
+	public void setPlanning(Planning date2) {
 		this.date = date2;
 	}
 
@@ -89,4 +96,60 @@ public class Rdv {
 		this.lieu = a;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((lieu == null) ? 0 : lieu.hashCode());
+		result = prime * result + ((motif == null) ? 0 : motif.hashCode());
+		result = prime * result + ((patient == null) ? 0 : patient.hashCode());
+		result = prime * result + ((praticien == null) ? 0 : praticien.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Rdv other = (Rdv) obj;
+		if (date == null) {
+			if (other.date != null)
+				return false;
+		} else if (!date.equals(other.date))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (lieu == null) {
+			if (other.lieu != null)
+				return false;
+		} else if (!lieu.equals(other.lieu))
+			return false;
+		if (motif == null) {
+			if (other.motif != null)
+				return false;
+		} else if (!motif.equals(other.motif))
+			return false;
+		if (patient == null) {
+			if (other.patient != null)
+				return false;
+		} else if (!patient.equals(other.patient))
+			return false;
+		if (praticien == null) {
+			if (other.praticien != null)
+				return false;
+		} else if (!praticien.equals(other.praticien))
+			return false;
+		return true;
+	}
+
+	
 }

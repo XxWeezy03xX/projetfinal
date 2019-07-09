@@ -18,8 +18,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 @DiscriminatorValue("patient")
 public class Patient extends User {
 	
-	@Enumerated(EnumType.ORDINAL)
-	private Roles role;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
@@ -27,7 +25,7 @@ public class Patient extends User {
 	
 	private Integer secu;
 	
-	@OneToMany(mappedBy = "id")
+	@OneToMany(mappedBy = "patient")
 	private List<Rdv> listesRdv;
 	
 	
@@ -43,7 +41,6 @@ public class Patient extends User {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((naissance == null) ? 0 : naissance.hashCode());
-		result = prime * result + ((role == null) ? 0 : role.hashCode());
 		result = prime * result + ((secu == null) ? 0 : secu.hashCode());
 		return result;
 	}
@@ -62,22 +59,12 @@ public class Patient extends User {
 				return false;
 		} else if (!naissance.equals(other.naissance))
 			return false;
-		if (role != other.role)
-			return false;
 		if (secu == null) {
 			if (other.secu != null)
 				return false;
 		} else if (!secu.equals(other.secu))
 			return false;
 		return true;
-	}
-
-	public Roles getRole() {
-		return role;
-	}
-
-	public void setRole(Roles role) {
-		this.role = role;
 	}
 
 	public Date getNaissance() {
