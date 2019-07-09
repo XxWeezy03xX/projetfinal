@@ -1,7 +1,10 @@
 package org.formation.model;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -11,44 +14,28 @@ import javax.persistence.OneToOne;
 
 
 @Entity
+@DiscriminatorValue("praticien")
 public class Praticien extends User {
 	
-	@Enumerated(EnumType.ORDINAL)
-	private Roles role;
-	private Adresse lieux[];
-	private ArrayList<String> specialites = new ArrayList<>();
 	private String presentation; 
 	private String moyen_paiement;
 	private String avis;
 	private Integer note;
-	@OneToMany
+	@OneToMany(mappedBy = "praticien")
 	@Enumerated(EnumType.ORDINAL)
-	private ArrayList<Motif> motifs;
+	private Set<Motif> motifs;
 	@OneToOne
-	@JoinColumn(name= "planning_id")
+	@JoinColumn(name = "praticien_planning")
 	private Planning planning; 
-	@OneToMany
-	@JoinColumn(name = "rdv")
-	private Rdv rdv; 
+	@OneToMany(mappedBy = "praticien")
+	private List<Rdv> rdv; 
 	
 	
 	public Praticien() {
 		super();
 	}
-	
-	public Roles getRole() {
-		return role;
-	}
-	public void setRole(Roles role) {
-		this.role = role;
-	}
-	public Adresse[] getLieux() {
-		return lieux;
-	}
-	public void setLieux(Adresse[] lieux) {
-		this.lieux = lieux;
-	}
-	
+
+
 	public Planning getPlanning() {
 		return planning;
 	}
@@ -57,25 +44,18 @@ public class Praticien extends User {
 		this.planning = planning;
 	}
 
-	public Rdv getRdv() {
+	public List<Rdv> getRdv() {
 		return rdv;
 	}
 
-	public void setRdv(Rdv rdv) {
+	
+
+	public void setRdv(List<Rdv> rdv) {
 		this.rdv = rdv;
 	}
 
 	public String getPresentation() {
 		return presentation;
-	}
-	
-
-	public ArrayList<String> getSpecialites() {
-		return specialites;
-	}
-
-	public void setSpecialites(ArrayList<String> specialites) {
-		this.specialites = specialites;
 	}
 
 	public void setPresentation(String presentation) {
@@ -100,11 +80,11 @@ public class Praticien extends User {
 		this.note = note;
 	}
 
-	public ArrayList<Motif> getMotifs() {
+	public Set<Motif> getMotifs() {
 		return motifs;
 	}
 
-	public void setMotifs(ArrayList<Motif> motifs) {
+	public void setMotifs(Set<Motif> motifs) {
 		this.motifs = motifs;
 	}		
 

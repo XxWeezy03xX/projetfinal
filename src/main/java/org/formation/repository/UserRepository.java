@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface UserRepository extends JpaRepository<User, String>
 {
-	@Query("select distinct u from User u left join fetch u.roles where u.username=:username")
-	Optional<User> findByIdWithRoles(String username);
+//	@Query("select distinct u from User u left join fetch u.role where u.username=:username")
+//	Optional<User> findByIdWithRoles(String username);
 
 }
