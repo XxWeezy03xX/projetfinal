@@ -2,7 +2,10 @@ package org.formation.model;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,9 +35,9 @@ public abstract class User
 	private String prenom;
 	@Email(message = "Email should be valid")
 	private String email;
+	@Embedded
 	@JsonView(JsonViews.Common.class)
 	private Adresse adresse;
-	
 	@JsonView(JsonViews.Common.class)
 	private String username;
 	private String password;
@@ -51,6 +54,7 @@ public abstract class User
 	public void setCivilite(Civilite civilite) {
 		this.civilite = civilite;
 	}
+
 
 	public String getNom() {
 		return nom;
@@ -150,5 +154,6 @@ public abstract class User
 		return true;
 	}
 
+	
 	
 }

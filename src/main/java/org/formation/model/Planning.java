@@ -14,7 +14,7 @@ public class Planning {
 	private Praticien praticien;
 	private ArrayList disponibilite;
 	
-	private Planning() {
+	public Planning() {
 }
 
 
