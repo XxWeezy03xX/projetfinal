@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.formation.model.Praticien;
 import org.formation.model.view.JsonViews;
 import org.formation.repository.PraticienRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 @CrossOrigin(origins="*")
 public class PraticienRestController 
 {
+	@Autowired
 	private PraticienRepository praticienRepository;
 	
 	

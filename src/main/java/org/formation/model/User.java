@@ -37,7 +37,7 @@ public abstract class User
 	private String nom;
 	@JsonView(JsonViews.Common.class)
 	private String prenom;
-	@Email(message = "Email should be valid")
+//	@Email(message = "Email should be valid")
 	private String email;
 	@OneToMany(mappedBy = "user")
 	@JsonView(JsonViews.Common.class)
