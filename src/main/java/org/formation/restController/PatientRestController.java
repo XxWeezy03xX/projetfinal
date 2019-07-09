@@ -41,7 +41,7 @@ public class PatientRestController {
 		return list();
 	}
 	
-	@JsonView(JsonViews.Common.class)
+        @JsonView(JsonViews.Common.class)
 	@GetMapping(value = { "/rdv" })
 	private ResponseEntity<List<Patient>> findAllWithRdv() {
 		return list();
@@ -64,17 +64,19 @@ public class PatientRestController {
 		return new ResponseEntity<>(headers, HttpStatus.CREATED);
 	}
 	
+
     @JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
 	public ResponseEntity<Patient> findAllWithId(@PathVariable(name = "id") Integer id) {
 		return findPatientById(id);
 	}
-    
+ 
     @JsonView(JsonViews.Common.class)
     @GetMapping("/{id}/rdv")
     public ResponseEntity<Patient> findByIdWithRdv(@PathVariable(name="id") Integer id) {
         return findPatientById(id);
     }
+
 
 
 	private ResponseEntity<Patient> findPatientById(Integer id) {
