@@ -23,12 +23,12 @@ public class Praticien extends User {
 	private Integer note;
 	@OneToMany(mappedBy = "praticien")
 	@Enumerated(EnumType.ORDINAL)
-	private Set<Motif> motifs;
+	private List<Motif> motifs = new ArrayList<Motif>();
 	@OneToOne
 	@JoinColumn(name = "praticien_planning")
 	private Planning planning; 
 	@OneToMany(mappedBy = "praticien")
-	private List<Rdv> rdv; 
+	private List<Rdv> rdvs = new ArrayList<Rdv>(); 
 	
 	
 	public Praticien() {
@@ -44,15 +44,16 @@ public class Praticien extends User {
 		this.planning = planning;
 	}
 
-	public List<Rdv> getRdv() {
-		return rdv;
-	}
-
 	
-
-	public void setRdv(List<Rdv> rdv) {
-		this.rdv = rdv;
+	public List<Rdv> getRdvs() {
+		return rdvs;
 	}
+
+
+	public void setRdvs(List<Rdv> rdvs) {
+		this.rdvs = rdvs;
+	}
+
 
 	public String getPresentation() {
 		return presentation;
@@ -80,12 +81,16 @@ public class Praticien extends User {
 		this.note = note;
 	}
 
-	public Set<Motif> getMotifs() {
+
+	public List<Motif> getMotifs() {
 		return motifs;
 	}
 
-	public void setMotifs(Set<Motif> motifs) {
+
+	public void setMotifs(List<Motif> motifs) {
 		this.motifs = motifs;
-	}		
+	}
+
+	
 
 }
