@@ -15,6 +15,22 @@ export class PraticienComponent implements OnInit {
   constructor(private praticienService: PraticienService) { }
 
   ngOnInit() {
+    this.list();
+  }
 
+  public list() {
+    this.praticienService.list().subscribe(res => {
+      this.praticiens = res;
+    });
+  }
+
+  public delete(id: number) {
+    this.praticienService.delete(id).subscribe(res => {
+      this.list();
+    });
+  }
+
+  public add() {
+    this.praticiens.push(new Praticien());
   }
 }
