@@ -57,8 +57,8 @@ private ResponseEntity<List<Adresse>> findAllWithUser() {
 		}
 		adresseRepository.save(adresse);
 		HttpHeaders headers = new HttpHeaders();
-		URI uri = uCB.path("/rest/adresse/{numero}").buildAndExpand(adresse.getNumero()).toUri(); // permet de construite une uri
-																						// à partir d'un chemin
+		//URI uri = uCB.path("/rest/adresse/{numero}").buildAndExpand(adresse.getNumero()).toUri(); // permet de construite une uri a partir d'un chemin
+		URI uri = uCB.path("/rest/adresse/{id}").buildAndExpand(adresse.getId()).toUri();																				
 		headers.setLocation(uri);
 		return new ResponseEntity<>(headers, HttpStatus.CREATED);
 	}

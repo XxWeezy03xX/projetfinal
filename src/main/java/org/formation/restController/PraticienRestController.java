@@ -76,7 +76,7 @@ public class PraticienRestController
     
     
     @JsonView(JsonViews.Common.class)
-    @GetMapping("/{id}/arme")
+    @GetMapping("/{id}/rdv")
     public ResponseEntity<Praticien> findByIdWithRdv(@PathVariable(name="id") Integer id) {
         return findPraticienById(id);
     }
