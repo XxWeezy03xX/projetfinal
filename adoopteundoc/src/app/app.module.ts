@@ -22,9 +22,7 @@ import {FormsModule} from "@angular/forms";
     AppComponent,
     PraticienComponent,
     PatientComponent,
-
-    PraticienDetailComponent
-
+    PraticienDetailComponent,
     PatientDetailComponent
 
   ],

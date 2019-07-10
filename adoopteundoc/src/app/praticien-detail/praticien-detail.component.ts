@@ -1,10 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Praticien} from '../model/praticien';
 import {PraticienService} from '../service/praticien.service';
-import {Adresse} from '../model/adresse';
 
 @Component({
-  selector: 'lignePraticien',
+  selector: '[lignePraticien]',
   templateUrl: './praticien-detail.component.html',
   styleUrls: ['./praticien-detail.component.css']
 })
@@ -30,24 +29,23 @@ export class PraticienDetailComponent implements OnInit {
 
   public edition() {
     this.edit = true;
-    this.oldPraticien = new Praticien(this.p.id, this.p.prenom,
-      this.p.nom, this.p.email, this.p.presentation, this.p.adresse, this.p.moyen_paiement, this.p.avis, this.p.note, this.p.motifs, this.p.rdv);
+    this.oldPraticien = new Praticien(this.p.presentation, this.p.moyen_paiement, this.p.avis, this.p.note, this.p.motifs, this.p.rdv);
   }
 
   public save() {
-    if (!this.s.id) {
-      this.soldatService.insert(this.s).subscribe(res => {
-        this.soldatRefresh.emit();
+    if (!this.p.id) {
+      this.praticienService.insert(this.p).subscribe(res => {
+        this.praticienRefresh.emit();
       });
     } else {
-      this.soldatService.update(this.s).subscribe(res => {
+      this.praticienService.update(this.p).subscribe(res => {
         this.consultation();
       });
     }
   }
 
   public cancel() {
-    this.s = this.oldSoldat;
+    this.p = this.oldPraticien;
     this.consultation();
   }
 
@@ -56,7 +54,8 @@ export class PraticienDetailComponent implements OnInit {
   }
 
   public delete(id: number) {
-    this.soldatService.delete(id).subscribe(res => {
-      this.soldatRefresh.emit();
+    this.praticienService.delete(id).subscribe(res => {
+      this.praticienRefresh.emit();
     });
   }
+}

@@ -1,1 +1,51 @@
-<p>praticien-detail works!</p>
+<td>{{p.id}}</td>
+<ng-container *ngIf="!edit;else showEdit">
+  <td>{{p.prenom}}</td>
+  <td>{{p.nom}}</td>
+  <td>{{p.email}}</td>
+  <td>{{(p.presentation !== null) ? (p.presentation|date:'dd/MM/yyyy') : ""}}</td>
+  <td>{{p.moyen_paiement}}</td>
+  <td>{{p.avis}}</td>
+  <td>{{p.note}}</td>
+  <td>{{p.rdv}}</td>
+  <ng-container *ngIf="p.adresse !==null;else adresseNull">
+
+    <td>{{p.adresse}}</td>
+    <td>{{p.adresse}}</td>
+    <td>{{p.adresse}}</td>
+    <td>{{p.adresse}}</td>
+  </ng-container>
+
+
+  <ng-template #adresseNull>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </ng-template>
+  <td>
+    <button (click)="edition()" class="btn btn-outline-info">editer</button>
+  </td>
+  <td>
+    <button (click)="delete(p.id)" class="btn btn-outline-danger">supprimer</button>
+  </td>
+</ng-container>
+
+<ng-template #showEdit>
+  <td>{{p.id}}</td>
+  <td><input [(ngModel)]="p.prenom"></td>
+  <td><input [(ngModel)]="p.nom"></td>
+  <td><input [(ngModel)]="p.email"></td>
+  <td><input type="date" [(ngModel)]="p.presentation"></td>
+  <td><input [(ngModel)]="p.moyen_paiement"></td>
+  <td><input [(ngModel)]="p.avis"></td>
+  <td><input [(ngModel)]="p.note"></td>
+  <td><input [(ngModel)]="p.rdv"></td>
+  <td><input [(ngModel)]="p.adresse"></td>
+  <td>
+    <button class="btn btn-success" (click)="save()">enregistrer</button>
+  </td>
+  <td>
+    <button class="btn btn-warning" (click)="cancel()">annuler</button>
+  </td>
+</ng-template>
