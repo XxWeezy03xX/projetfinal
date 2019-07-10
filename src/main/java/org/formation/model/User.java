@@ -98,6 +98,15 @@ public abstract class User
 	public List<Adresse> getAdresse() {
 		return adresse;
 	}
+	
+//	public Adresse getElementAdresse()
+//	{
+//		for(int i = 0; i < adresse.size();i++)
+//		{
+//			return adresse.get(i);
+//		}
+//		return null;
+//	}
 
 	public void setAdresse(List<Adresse> adresse) {
 		this.adresse = adresse;
