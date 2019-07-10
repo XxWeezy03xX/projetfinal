@@ -9,7 +9,12 @@ import {PatientComponent} from './patient/patient.component';
 import {HttpClientModule} from "@angular/common/http";
 import {PatientService} from "./service/patient.service";
 import {PraticienService} from "./service/praticien.service";
+
 import { PraticienDetailComponent } from './praticien-detail/praticien-detail.component';
+
+import { PatientDetailComponent } from './patient-detail/patient-detail.component';
+import {FormsModule} from "@angular/forms";
+
 
 
 @NgModule({
@@ -17,10 +22,14 @@ import { PraticienDetailComponent } from './praticien-detail/praticien-detail.co
     AppComponent,
     PraticienComponent,
     PatientComponent,
+
     PraticienDetailComponent
+
+    PatientDetailComponent
+
   ],
   imports: [
-    BrowserModule, HttpClientModule
+    BrowserModule, HttpClientModule, FormsModule
   ],
   providers: [PatientService, PraticienService],
   bootstrap: [AppComponent]

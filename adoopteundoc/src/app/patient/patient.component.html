@@ -1,10 +1,10 @@
 <div><table class="table">
 
-  <tr ligneSoldat [patient]="pat" *ngFor="let pat of patients">
+  <tr lignePatient (patientRefresh)="list()" [patient]="pat" *ngFor="let pat of patients">
 
 
 
 
   </tr>
 </table>
-  <button (click)="">ajouter</button>
+  <button (click)="add()">ajouter</button>
