@@ -99,7 +99,8 @@ public class PraticienRestController
     		 praticienEnBase.setPrenom((praticien.getPrenom() != null)? praticien.getPrenom():praticienEnBase.getPrenom());
     		 praticienEnBase.setNom((praticien.getNom() != null)? praticien.getNom():praticienEnBase.getNom());
     		 praticienEnBase.setAdresse(((praticien.getAdresse() != null)? praticien.getAdresse():praticienEnBase.getAdresse()));
-    		 praticienEnBase.setRdvs(praticien.getRdvs());
+    		 //praticienEnBase.setRdvs(praticien.getRdvs());
+    		 praticienEnBase.setRdv(praticien.getRdv());
     		 praticienRepository.save(praticienEnBase);
     		 return new ResponseEntity<>(HttpStatus.OK);
     		 

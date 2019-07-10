@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -25,11 +26,10 @@ public class Patient extends User {
 	
 	private Integer secu;
 	
-	@OneToMany(mappedBy = "patient")
-	private List<Rdv> listesRdv;
-	
-	
-	
+	//@OneToMany(mappedBy = "patient")
+	@OneToOne(mappedBy = "patient")
+	//private List<Rdv> listesRdv;
+	private Rdv rdv;
 	
 	public Patient() {
 	super();
@@ -83,13 +83,21 @@ public class Patient extends User {
 		this.secu = secu;
 	}
 
-	public List<Rdv> getListesRdv() {
-		return listesRdv;
+	public Rdv getRdv() {
+		return rdv;
 	}
 
-	public void setListesRdv(List<Rdv> listesRdv) {
-		this.listesRdv = listesRdv;
+	public void setRdv(Rdv rdv) {
+		this.rdv = rdv;
 	}
+
+//	public List<Rdv> getListesRdv() {
+//		return listesRdv;
+//	}
+//
+//	public void setListesRdv(List<Rdv> listesRdv) {
+//		this.listesRdv = listesRdv;
+//	}
 	
 	
 

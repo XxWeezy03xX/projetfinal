@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.constraints.Email;
@@ -41,9 +42,11 @@ public abstract class User
 //	@Email(message = "Email should be valid")
 	private String email;
 
-	@OneToMany(mappedBy = "user")
+	//@OneToMany(mappedBy = "user")
+	@OneToOne
 	@JsonView(JsonViews.Common.class)
-	private List<Adresse> adresse;
+	//private List<Adresse> adresse;
+	private Adresse adresse;
 	@JsonView(JsonViews.Common.class)
 	private String username;
 	private String password;
@@ -95,25 +98,24 @@ public abstract class User
 		this.email = email;
 	}
 
-	public List<Adresse> getAdresse() {
-		return adresse;
-	}
-	
-//	public Adresse getElementAdresse()
-//	{
-//		for(int i = 0; i < adresse.size();i++)
-//		{
-//			return adresse.get(i);
-//		}
-//		return null;
+//	public List<Adresse> getAdresse() {
+//		return adresse;
 //	}
-
-	public void setAdresse(List<Adresse> adresse) {
-		this.adresse = adresse;
-	}
+//
+//	public void setAdresse(List<Adresse> adresse) {
+//		this.adresse = adresse;
+//	}
 
 	public String getUsername() {
 		return username;
+	}
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
 	}
 
 	public void setUsername(String username) {
