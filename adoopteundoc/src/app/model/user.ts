@@ -1,7 +1,8 @@
 import {Adresse} from './adresse';
 
 export abstract class User {
-  constructor(private _id?: number, private _nom?: string, private _prenom?: string, private _email?: string, private adresse?: Adresse[]) {
+
+  constructor(private _id?: number, private _nom?: string, private _prenom?: string, private _email?: string, private _adresse?: Adresse[]) {
   }
 
   get id(): number {
@@ -34,5 +35,13 @@ export abstract class User {
 
   set email(value: string) {
     this._email = value;
+  }
+
+  get adresse(): Adresse[] {
+    return this._adresse;
+  }
+
+  set adresse(value: Adresse[]) {
+    this._adresse = value;
   }
 }

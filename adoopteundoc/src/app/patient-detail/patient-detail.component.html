@@ -1,0 +1,45 @@
+<td>{{pat.id}}</td>
+<ng-container *ngIf="!edit;else showEdit">
+  <td>{{pat.prenom}}</td>
+  <td>{{pat.nom}}</td>
+  <td>{{pat.email}}</td>
+  <ng-container *ngIf="pat.adresse !==null;else adresseNull">
+
+    <td>{{s.adresse.numero}}</td>
+    <td>{{s.adresse.rue}}</td>
+    <td>{{s.adresse.cp}}</td>
+    <td>{{s.adresse.ville}}</td>
+  </ng-container>
+
+
+  <ng-template #adresseNull>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </ng-template>
+  <td>
+    <button (click)="edition()" class="btn btn-outline-info">editer</button>
+  </td>
+  <td>
+    <button (click)="delete(s.id)" class="btn btn-outline-danger">supprimer</button>
+  </td>
+</ng-container>
+
+<ng-template #showEdit>
+  <td>{{s.id}}</td>
+  <td><input [(ngModel)]="s.prenom"></td>
+  <td><input [(ngModel)]="s.nom"></td>
+  <td><input type="number" [(ngModel)]="s.pv"></td>
+  <td><input type="date" [(ngModel)]="s.enrolement"></td>
+  <td><input type="number" [(ngModel)]="s.adresse.numero"></td>
+  <td><input [(ngModel)]="s.adresse.rue"></td>
+  <td><input [(ngModel)]="s.adresse.cp"></td>
+  <td><input [(ngModel)]="s.adresse.ville"></td>
+  <td>
+    <button class="btn btn-success" (click)="save()">enregistrer</button>
+  </td>
+  <td>
+    <button class="btn btn-warning" (click)="cancel()">annuler</button>
+  </td>
+</ng-template>
