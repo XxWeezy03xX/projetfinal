@@ -21,14 +21,20 @@ public class Praticien extends User {
 	private String moyen_paiement;
 	private String avis;
 	private Integer note;
-	@OneToMany(mappedBy = "praticien")
-	@Enumerated(EnumType.ORDINAL)
-	private List<Motif> motifs = new ArrayList<Motif>();
+//	@OneToMany(mappedBy = "praticien")
+//	@Enumerated(EnumType.ORDINAL)
+	@OneToOne
+	@JoinColumn(name="praticien_motif")
+	//private List<Motif> motifs = new ArrayList<Motif>();
+	private Motif motif;
 //	@OneToOne
 //	@JoinColumn(name = "praticien_planning")
 //	private Planning planning; 
-	@OneToMany(mappedBy = "praticien")
-	private List<Rdv> rdvs = new ArrayList<Rdv>(); 
+	//@OneToMany(mappedBy = "praticien")
+	@OneToOne
+	@JoinColumn(name="praticien_rdv")
+	//private List<Rdv> rdvs = new ArrayList<Rdv>(); 
+	private Rdv rdv;
 	
 	
 	public Praticien() {
@@ -45,19 +51,29 @@ public class Praticien extends User {
 //	}
 
 	
-	public List<Rdv> getRdvs() {
-		return rdvs;
-	}
-
-
-	public void setRdvs(List<Rdv> rdvs) {
-		this.rdvs = rdvs;
-	}
+//	public List<Rdv> getRdvs() {
+//		return rdvs;
+//	}
+//
+//
+//	public void setRdvs(List<Rdv> rdvs) {
+//		this.rdvs = rdvs;
+//	}
 
 
 	public String getPresentation() {
 		return presentation;
 	}
+
+	public Rdv getRdv() {
+		return rdv;
+	}
+
+
+	public void setRdv(Rdv rdv) {
+		this.rdv = rdv;
+	}
+
 
 	public void setPresentation(String presentation) {
 		this.presentation = presentation;
@@ -82,14 +98,24 @@ public class Praticien extends User {
 	}
 
 
-	public List<Motif> getMotifs() {
-		return motifs;
+	public Motif getMotif() {
+		return motif;
 	}
 
 
-	public void setMotifs(List<Motif> motifs) {
-		this.motifs = motifs;
+	public void setMotif(Motif motif) {
+		this.motif = motif;
 	}
+
+//
+//	public List<Motif> getMotifs() {
+//		return motifs;
+//	}
+//
+//
+//	public void setMotifs(List<Motif> motifs) {
+//		this.motifs = motifs;
+//	}
 
 	
 

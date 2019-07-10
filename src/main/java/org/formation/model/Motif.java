@@ -21,7 +21,8 @@ public class Motif {
 	private Integer id;
 	private String motif;
 	private Integer prix;
-	@ManyToOne(cascade = CascadeType.ALL)
+	//@ManyToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "motif_praticien")
 	private Praticien praticien;
 	@OneToOne

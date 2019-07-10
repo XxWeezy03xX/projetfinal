@@ -16,13 +16,14 @@ public class Rdv {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="rdv_patient")
 	private Patient patient;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	//@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "rdv_praticien")
 	private Praticien praticien;
-//	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	@JoinColumn(name = "rdv_planning")
 //	private Planning date;
 	@OneToOne
