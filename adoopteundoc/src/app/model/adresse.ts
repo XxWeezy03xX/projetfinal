@@ -1,7 +1,8 @@
 import {User} from './user';
+import {Rdv} from './rdv';
 
 export class Adresse {
-  constructor(private _id?: number, private _numero?: number, private _rue?: string, private _cp?: string, private _ville?: string, private _user?: User, private _rdv?: rdv) {
+  constructor(private _id?: number, private _numero?: number, private _rue?: string, private _cp?: string, private _ville?: string, private _user?: User, private _rdv?: Rdv) {
 
   }
 
@@ -53,11 +54,11 @@ export class Adresse {
     this._user = value;
   }
 
-  get rdv(): rdv {
+  get rdv(): Rdv {
     return this._rdv;
   }
 
-  set rdv(value: rdv) {
+  set rdv(value: Rdv) {
     this._rdv = value;
   }
 }
