@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Patient} from "../model/patient";
-import {PatientService} from "../service/patient.service";
+import {Patient} from '../model/patient';
+import {PatientService} from '../service/patient.service';
 
 @Component({
   selector: 'app-patient',
@@ -16,11 +16,21 @@ export class PatientComponent implements OnInit {
     this.list();
   }
 
-  public list(){
+  public list() {
     this.patientService.list().subscribe(res =>{
       console.log(res);
       this.patients = res;
     });
+  }
+
+  public delete(id: number) {
+    this.patientService.delete(id).subscribe(res => {
+      this.list();
+    });
+  }
+
+  public add() {
+    this.patients.push(new Patient());
   }
 
 }
