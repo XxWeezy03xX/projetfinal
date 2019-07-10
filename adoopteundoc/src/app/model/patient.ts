@@ -1,9 +1,10 @@
 import {User} from './user';
 import {Rdv} from './rdv';
+import {Adresse} from './adresse';
 
-export class Patient extends User{
-  constructor(private _naissance?: Date, private _secu?: number, private _rdv?: Rdv[]) {
-    super();
+export class Patient extends User {
+  constructor(private _naissance?: Date, private _secu?: number, private _rdv?: Rdv[],  _id?: number, _nom?: string, _prenom?: string, _email?: string, _adresse?: Adresse[]) {
+    super(_id, _nom, _prenom, _email, _adresse);
   }
 
   get naissance(): Date {

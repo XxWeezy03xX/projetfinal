@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Patient} from "../model/patient";
+import {Patient} from '../model/patient';
 import {PatientService} from "../service/patient.service";
 
 @Component({
@@ -33,7 +33,7 @@ export class PatientDetailComponent implements OnInit {
 
   public edition() {
     this.edit = true;
-    this.oldPatient = new Patient(this.pat.naissance, this.pat.secu, this.pat.rdv)
+    this.oldPatient = new Patient(this.pat.naissance, this.pat.secu, this.pat.rdv);
   }
 
   public save() {
@@ -58,7 +58,7 @@ export class PatientDetailComponent implements OnInit {
     this.edit = false;
   }
 
-  public delete (id: number) {
+  public delete(id: number) {
     this.patientService.delete(id).subscribe(res => {
       this.patientRefresh.emit();
     });
