@@ -22,9 +22,9 @@ public class Rdv {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "rdv_praticien")
 	private Praticien praticien;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "rdv_planning")
-	private Planning date;
+//	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	@JoinColumn(name = "rdv_planning")
+//	private Planning date;
 	@OneToOne
 	@JoinColumn(name = "rdv_motif")
 	private Motif motif;
@@ -35,20 +35,20 @@ public class Rdv {
 	public Rdv() {	
 	}
 	
-	public Rdv(Integer id, Patient patient, Praticien praticien, Planning date, Motif motif, Adresse lieu) {
+	public Rdv(Integer id, Patient patient, Praticien praticien, Motif motif, Adresse lieu) {
 		super();
 		this.id = id;
 		this.patient = patient;
 		this.praticien = praticien;
-		this.date = date;
+//		this.date = date;
 		this.motif = motif;
 		this.lieu = lieu;
 	}
 
 
-	public void setDate(Planning date) {
-		this.date = date;
-	}
+//	public void setDate(Planning date) {
+//		this.date = date;
+//	}
 
 	public Integer getId() {
 		return id;
@@ -74,13 +74,13 @@ public class Rdv {
 		this.praticien = praticien;
 	}
 
-	public Planning getDate() {
-		return date;
-	}
-
-	public void setPlanning(Planning date2) {
-		this.date = date2;
-	}
+//	public Planning getDate() {
+//		return date;
+//	}
+//
+//	public void setPlanning(Planning date2) {
+//		this.date = date2;
+//	}
 
 	public Motif getMotif() {
 		return motif;
@@ -102,7 +102,7 @@ public class Rdv {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		//result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((lieu == null) ? 0 : lieu.hashCode());
 		result = prime * result + ((motif == null) ? 0 : motif.hashCode());
@@ -120,11 +120,11 @@ public class Rdv {
 		if (getClass() != obj.getClass())
 			return false;
 		Rdv other = (Rdv) obj;
-		if (date == null) {
-			if (other.date != null)
-				return false;
-		} else if (!date.equals(other.date))
-			return false;
+//		if (date == null) {
+//			if (other.date != null)
+//				return false;
+//		} else if (!date.equals(other.date))
+//			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
