@@ -24,7 +24,8 @@ public class Adresse {
 	@OneToOne(mappedBy = "lieu")
 	private Rdv rdv;
 	
-	
+	public Adresse() {}
+
 	public User getUser() {
 		return user;
 	}
