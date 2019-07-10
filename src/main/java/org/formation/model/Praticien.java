@@ -24,9 +24,9 @@ public class Praticien extends User {
 	@OneToMany(mappedBy = "praticien")
 	@Enumerated(EnumType.ORDINAL)
 	private List<Motif> motifs = new ArrayList<Motif>();
-	@OneToOne
-	@JoinColumn(name = "praticien_planning")
-	private Planning planning; 
+//	@OneToOne
+//	@JoinColumn(name = "praticien_planning")
+//	private Planning planning; 
 	@OneToMany(mappedBy = "praticien")
 	private List<Rdv> rdvs = new ArrayList<Rdv>(); 
 	
@@ -36,13 +36,13 @@ public class Praticien extends User {
 	}
 
 
-	public Planning getPlanning() {
-		return planning;
-	}
-
-	public void setPlanning(Planning planning) {
-		this.planning = planning;
-	}
+//	public Planning getPlanning() {
+//		return planning;
+//	}
+//
+//	public void setPlanning(Planning planning) {
+//		this.planning = planning;
+//	}
 
 	
 	public List<Rdv> getRdvs() {

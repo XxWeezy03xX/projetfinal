@@ -90,7 +90,7 @@ public class RdvRestController {
 			Rdv rdvEnBase = opt.get();
 			rdvEnBase.setPatient((rdv.getPatient() != null) ? rdv.getPatient():rdvEnBase.getPatient());
 			rdvEnBase.setPraticien((rdv.getPraticien() != null) ? rdv.getPraticien():rdvEnBase.getPraticien());
-			rdvEnBase.setDate((rdv.getDate() != null) ? rdv.getDate(): rdvEnBase.getDate());
+			//rdvEnBase.setDate((rdv.getDate() != null) ? rdv.getDate(): rdvEnBase.getDate());
 			rdvEnBase.setMotif((rdv.getMotif() != null) ? rdv.getMotif(): rdvEnBase.getMotif());
 			rdvEnBase.setLieu((rdv.getLieu() != null) ? rdv.getLieu(): rdvEnBase.getLieu());
 			rdvRepository.save(rdvEnBase);
