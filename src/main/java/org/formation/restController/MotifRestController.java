@@ -7,12 +7,8 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.formation.model.Motif;
-import org.formation.model.Planning;
-import org.formation.model.Rdv;
 import org.formation.model.view.JsonViews;
 import org.formation.repository.MotifRepository;
-import org.formation.repository.PlanningRepository;
-import org.formation.repository.RdvRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
