@@ -16,6 +16,7 @@ export class PraticienComponent implements OnInit {
 
   ngOnInit() {
     this.list();
+    console.log(this.praticiens);
   }
 
   public list() {

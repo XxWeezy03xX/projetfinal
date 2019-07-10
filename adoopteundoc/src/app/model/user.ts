@@ -3,10 +3,6 @@ import {Adresse} from './adresse';
 export abstract class User {
 
   constructor(private _id?: number, private _nom?: string, private _prenom?: string, private _email?: string, public _adresse?: Adresse[]) {
-
-
-
-
   }
 
   get id(): number {
