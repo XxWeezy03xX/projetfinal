@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Praticien} from '../model/praticien';
+import {PraticienService} from '../service/praticien.service';
+
 
 @Component({
   selector: 'app-praticien',
@@ -10,7 +12,7 @@ export class PraticienComponent implements OnInit {
 
   private praticiens: Praticien[] = [];
 
-  constructor() { }
+  constructor(private praticienService: PraticienService) { }
 
   ngOnInit() {
 
