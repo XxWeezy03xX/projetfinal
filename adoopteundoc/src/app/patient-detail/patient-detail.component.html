@@ -3,12 +3,15 @@
   <td>{{pat.prenom}}</td>
   <td>{{pat.nom}}</td>
   <td>{{pat.email}}</td>
+  <td>{{(pat.naissance !== null) ? (pat.naissance|date:'dd/MM/yyyy') : ""}}</td>
+  <td>{{pat.secu}}</td>
+  <td>{{pat.rdv}}</td>
   <ng-container *ngIf="pat.adresse !==null;else adresseNull">
 
-    <td>{{s.adresse.numero}}</td>
-    <td>{{s.adresse.rue}}</td>
-    <td>{{s.adresse.cp}}</td>
-    <td>{{s.adresse.ville}}</td>
+    <td>{{pat.adresse}}</td>
+    <td>{{pat.adresse}}</td>
+    <td>{{pat.adresse}}</td>
+    <td>{{pat.adresse}}</td>
   </ng-container>
 
 
@@ -22,20 +25,19 @@
     <button (click)="edition()" class="btn btn-outline-info">editer</button>
   </td>
   <td>
-    <button (click)="delete(s.id)" class="btn btn-outline-danger">supprimer</button>
+    <button (click)="delete(pat.id)" class="btn btn-outline-danger">supprimer</button>
   </td>
 </ng-container>
 
 <ng-template #showEdit>
-  <td>{{s.id}}</td>
-  <td><input [(ngModel)]="s.prenom"></td>
-  <td><input [(ngModel)]="s.nom"></td>
-  <td><input type="number" [(ngModel)]="s.pv"></td>
-  <td><input type="date" [(ngModel)]="s.enrolement"></td>
-  <td><input type="number" [(ngModel)]="s.adresse.numero"></td>
-  <td><input [(ngModel)]="s.adresse.rue"></td>
-  <td><input [(ngModel)]="s.adresse.cp"></td>
-  <td><input [(ngModel)]="s.adresse.ville"></td>
+  <td>{{pat.id}}</td>
+  <td><input [(ngModel)]="pat.prenom"></td>
+  <td><input [(ngModel)]="pat.nom"></td>
+  <td><input [(ngModel)]="pat.email"></td>
+  <td><input type="date" [(ngModel)]="pat.naissance"></td>
+  <td><input [(ngModel)]="pat.secu"></td>
+  <td><input [(ngModel)]="pat.rdv"></td>
+  <td><input [(ngModel)]="pat.adresse"></td>
   <td>
     <button class="btn btn-success" (click)="save()">enregistrer</button>
   </td>

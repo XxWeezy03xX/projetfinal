@@ -1,6 +1,6 @@
 <div><table class="table">
 
-  <tr lignePatient [patient]="pat" *ngFor="let pat of patients">
+  <tr lignePatient (patientRefresh)="list()" [patient]="pat" *ngFor="let pat of patients">
 
 
 
