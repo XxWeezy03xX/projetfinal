@@ -1,5 +1,8 @@
 package org.formation.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,11 +10,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import org.formation.model.view.JsonViews;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @SequenceGenerator(name="seq", initialValue=1)
@@ -32,9 +38,12 @@ public class Adresse {
 	private String ville; 
 	 @ManyToOne
 	@JoinColumn(name = "adresse_user")
+	 @JsonBackReference
 	private User user; 
-	@OneToOne(mappedBy = "lieu")
-	private Rdv rdv;
+	@JsonView(JsonViews.Common.class)
+	@OneToMany(mappedBy = "lieu")
+	 @JsonManagedReference
+	private List<Rdv> listeRdv = new ArrayList<Rdv>();
 	
 	public Adresse() {}
 
@@ -50,13 +59,13 @@ public class Adresse {
 		this.id = id;
 	}
 
-	public Rdv getRdv() {
-		return rdv;
+
+	public List<Rdv> getListeRdv() {
+		return listeRdv;
 	}
 
-
-	public void setRdv(Rdv rdv) {
-		this.rdv = rdv;
+	public void setListeRdv(List<Rdv> listeRdv) {
+		this.listeRdv = listeRdv;
 	}
 
 

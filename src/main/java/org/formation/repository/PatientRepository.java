@@ -13,9 +13,5 @@ public interface PatientRepository extends JpaRepository<Patient, Integer>
 	public List<Patient> findAllCustom();
 	
 	public List<Patient> findByPrenomContaining(String prenom);
-	
-	//@Query("select p from Patient p where p.rdv in :rdv")
-	//public List<Patient> findByRdv();
-
 
 }
