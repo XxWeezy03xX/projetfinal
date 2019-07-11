@@ -50,7 +50,6 @@ public abstract class User
 	@JsonView(JsonViews.UserWithAdresse.class)
 	private List<Adresse> adresse =  new ArrayList<Adresse>();
 	@JsonView(JsonViews.Common.class)
-	private String username;
 	private String password;
 	private boolean enable;
 	@Version
