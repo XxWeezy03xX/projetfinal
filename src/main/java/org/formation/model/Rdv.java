@@ -22,7 +22,7 @@ public class Rdv {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="seq")
 	@JsonView(JsonViews.Common.class)
 	private Integer id;
-	 @ManyToOne( cascade = CascadeType.ALL)
+	 @ManyToOne
 	@JoinColumn(name="rdv_patient")
 	 @JsonView(JsonViews.RdvWithUser.class)
 	private Patient patient;
