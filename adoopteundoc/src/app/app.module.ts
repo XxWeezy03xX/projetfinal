@@ -16,6 +16,9 @@ import { PatientDetailComponent } from './patient-detail/patient-detail.componen
 import {FormsModule} from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { InfoPatientComponent } from './info-patient/info-patient.component';
+import { FooterComponent } from './footer/footer.component';
+import {RouterModule} from '@angular/router';
+import {routes} from './routes';
 
 
 
@@ -27,11 +30,12 @@ import { InfoPatientComponent } from './info-patient/info-patient.component';
     PraticienDetailComponent,
     PatientDetailComponent,
     HeaderComponent,
-    InfoPatientComponent
+    InfoPatientComponent,
+    FooterComponent
 
   ],
   imports: [
-    BrowserModule, HttpClientModule, FormsModule
+    BrowserModule, HttpClientModule, FormsModule, RouterModule.forRoot(routes)
   ],
   providers: [PatientService, PraticienService],
   bootstrap: [AppComponent]
