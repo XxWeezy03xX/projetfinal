@@ -10,9 +10,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Transient;
 
 import org.formation.model.view.JsonViews;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @SequenceGenerator(name="seq", initialValue=1)
@@ -24,22 +26,27 @@ public class Rdv {
 	private Integer id;
 	 @ManyToOne
 	@JoinColumn(name="rdv_patient")
-	 @JsonView(JsonViews.RdvWithUser.class)
+	 @JsonBackReference
+	 @JsonView(JsonViews.Common.class)
 	private Patient patient;
 	@ManyToOne
 	@JoinColumn(name = "rdv_praticien")
-	@JsonView(JsonViews.RdvWithUser.class)
+	@JsonView(JsonViews.Common.class)
+	 @JsonBackReference
 	private Praticien praticien;
 	//@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	//@JoinColumn(name = "rdv_planning")
 //	private Planning date;
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "rdv_motif")
+	//@Transient
+	@JsonBackReference
 	@JsonView(JsonViews.Common.class)
 	private Motif motif;
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "rdv_lieu")
 	@JsonView(JsonViews.Common.class)
+	 @JsonBackReference
 	private Adresse lieu;
 	
 	public Rdv() {	

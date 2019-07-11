@@ -11,11 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import org.formation.model.view.JsonViews;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
 @SequenceGenerator(name="seq", initialValue=1)
 @Entity
@@ -29,13 +32,15 @@ public class Motif {
 	private String motif;
 	@JsonView(JsonViews.Common.class)
 	private Integer prix;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
+	@JoinColumn(name="motif_praticien")
 	@JsonView(JsonViews.Common.class)
+	@JsonBackReference
 	private Praticien praticien;
-	@OneToOne
-	@JoinColumn(name = " motif_rdv")
+	@OneToMany(mappedBy = "motif")
 	@JsonView(JsonViews.Common.class)
-	private Rdv rdv;
+	@JsonManagedReference
+	private List<Rdv> listesRdv = new ArrayList<Rdv>();
 
 	public Integer getId() {
 		return id;
@@ -53,12 +58,12 @@ public class Motif {
 		this.praticien = praticien;
 	}
 
-	public Rdv getRdv() {
-		return rdv;
+	public List<Rdv> getListesRdv() {
+		return listesRdv;
 	}
 
-	public void setRdv(Rdv rdv) {
-		this.rdv = rdv;
+	public void setListesRdv(List<Rdv> listesRdv) {
+		this.listesRdv = listesRdv;
 	}
 
 	public Integer getPrix() {

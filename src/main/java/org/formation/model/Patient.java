@@ -1,5 +1,6 @@
 package org.formation.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import javax.persistence.TemporalType;
 import org.formation.model.view.JsonViews;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
 
 
@@ -30,8 +32,9 @@ public class Patient extends User {
 	private Integer secu;
 	
 	@OneToMany(mappedBy = "patient")
-	@JsonView(JsonViews.UserWithRdv.class)
-	private List<Rdv> listesRdv;
+	@JsonView(JsonViews.Common.class)
+	@JsonManagedReference
+	private List<Rdv> listesRdv = new ArrayList<Rdv>();
 	
 	public Patient() {
 	super();

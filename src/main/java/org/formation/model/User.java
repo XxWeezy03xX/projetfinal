@@ -1,5 +1,6 @@
 package org.formation.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -46,8 +47,8 @@ public abstract class User
 	private String email;
 
 	@OneToMany(mappedBy = "user")
-	@JsonView(JsonViews.Common.class)
-	private List<Adresse> adresse;
+	@JsonView(JsonViews.UserWithAdresse.class)
+	private List<Adresse> adresse =  new ArrayList<Adresse>();
 	@JsonView(JsonViews.Common.class)
 	private String password;
 	private boolean enable;

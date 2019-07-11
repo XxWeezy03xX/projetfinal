@@ -92,7 +92,7 @@ public class MotifRestController {
 			motifEnBase.setMotif((motif.getMotif() != null) ? motif.getMotif():motifEnBase.getMotif());
 			motifEnBase.setPraticien((motif.getPraticien() != null) ? motif.getPraticien():motifEnBase.getPraticien());
 			motifEnBase.setPrix((motif.getPrix() != null) ? motif.getPrix():motifEnBase.getPrix());
-			motifEnBase.setRdv((motif.getRdv() != null) ? motif.getRdv():motifEnBase.getRdv());
+			motifEnBase.setListesRdv((motif.getListesRdv() != null) ? motif.getListesRdv():motifEnBase.getListesRdv());
 
 			motifRepository.save(motifEnBase);
 			return new ResponseEntity<>(HttpStatus.OK);
