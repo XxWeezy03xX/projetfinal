@@ -66,7 +66,7 @@ public class MotifRestController {
 	@GetMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
 	public ResponseEntity<Motif> findById(@PathVariable(name="id") Integer id) {
-		return findById(id);
+		return findMotifById(id);
 	}
 	
 //	@GetMapping("/{id}/rdv")
@@ -75,14 +75,14 @@ public class MotifRestController {
 //		return findById(id);
 //	}
 //	
-//	@JsonView(JsonViews.Common.class)
-//	public ResponseEntity<Planning> findSoldatById(Integer id) {
-//		Optional<Rdv> opt =rdvRepository.findById(id);
-//		if(opt.isPresent()) {
-//			return new ResponseEntity<Rdv>(opt.get(), HttpStatus.OK);
-//		}
-//		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//	}
+	@JsonView(JsonViews.Common.class)
+	public ResponseEntity<Motif> findMotifById(Integer id) {
+		Optional<Motif> opt =motifRepository.findById(id);
+		if(opt.isPresent()) {
+			return new ResponseEntity<Motif>(opt.get(), HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<Void> update(@PathVariable(name="id") Integer id, @Valid @RequestBody Motif motif, BindingResult br) {

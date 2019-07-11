@@ -12,29 +12,31 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.formation.model.view.JsonViews;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
 
 @Entity
 @DiscriminatorValue("praticien")
 public class Praticien extends User {
-	
+	@JsonView(JsonViews.Common.class)
 	private String presentation; 
+	@JsonView(JsonViews.Common.class)
 	private String moyen_paiement;
+	@JsonView(JsonViews.Common.class)
 	private String avis;
+	@JsonView(JsonViews.Common.class)
 	private Integer note;
-//	@OneToMany(mappedBy = "praticien")
-//	@Enumerated(EnumType.ORDINAL)
-	@OneToOne
-	@JoinColumn(name="praticien_motif")
-	//private List<Motif> motifs = new ArrayList<Motif>();
-	private Motif motif;
+	@OneToMany(mappedBy = "praticien")
+	@JsonView(JsonViews.Common.class)
+	private List<Motif> motifs = new ArrayList<Motif>();
 //	@OneToOne
 //	@JoinColumn(name = "praticien_planning")
 //	private Planning planning; 
-	//@OneToMany(mappedBy = "praticien")
-	@OneToOne
-	@JoinColumn(name="praticien_rdv")
-	//private List<Rdv> rdvs = new ArrayList<Rdv>(); 
-	private Rdv rdv;
+	@OneToMany(mappedBy = "praticien")
+	@JsonView(JsonViews.UserWithRdv.class)
+	private List<Rdv> rdvs = new ArrayList<Rdv>(); 
 	
 	
 	public Praticien() {
@@ -51,29 +53,19 @@ public class Praticien extends User {
 //	}
 
 	
-//	public List<Rdv> getRdvs() {
-//		return rdvs;
-//	}
-//
-//
-//	public void setRdvs(List<Rdv> rdvs) {
-//		this.rdvs = rdvs;
-//	}
+	public List<Rdv> getRdvs() {
+		return rdvs;
+	}
+
+
+	public void setRdvs(List<Rdv> rdvs) {
+		this.rdvs = rdvs;
+	}
 
 
 	public String getPresentation() {
 		return presentation;
 	}
-
-	public Rdv getRdv() {
-		return rdv;
-	}
-
-
-	public void setRdv(Rdv rdv) {
-		this.rdv = rdv;
-	}
-
 
 	public void setPresentation(String presentation) {
 		this.presentation = presentation;
@@ -97,25 +89,14 @@ public class Praticien extends User {
 		this.note = note;
 	}
 
-
-	public Motif getMotif() {
-		return motif;
+	public List<Motif> getMotifs() {
+		return motifs;
 	}
 
 
-	public void setMotif(Motif motif) {
-		this.motif = motif;
+	public void setMotifs(List<Motif> motifs) {
+		this.motifs = motifs;
 	}
-
-//
-//	public List<Motif> getMotifs() {
-//		return motifs;
-//	}
-//
-//
-//	public void setMotifs(List<Motif> motifs) {
-//		this.motifs = motifs;
-//	}
 
 	
 
