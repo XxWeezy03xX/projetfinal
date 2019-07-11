@@ -49,7 +49,6 @@ public abstract class User
 	@JsonView(JsonViews.Common.class)
 	private List<Adresse> adresse;
 	@JsonView(JsonViews.Common.class)
-	private String username;
 	private String password;
 	private boolean enable;
 	@Version
