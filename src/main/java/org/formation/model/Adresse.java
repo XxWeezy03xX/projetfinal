@@ -30,7 +30,7 @@ public class Adresse {
 	private String cp;
 	@JsonView(JsonViews.Common.class)
 	private String ville; 
-	 @ManyToOne( cascade = CascadeType.ALL)
+	 @ManyToOne
 	@JoinColumn(name = "adresse_user")
 	private User user; 
 	@OneToOne(mappedBy = "lieu")
