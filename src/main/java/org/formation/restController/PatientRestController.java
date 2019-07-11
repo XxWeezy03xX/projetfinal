@@ -41,7 +41,7 @@ public class PatientRestController {
 		return list();
 	}
 	
-        @JsonView(JsonViews.Common.class)
+        @JsonView(JsonViews.UserWithRdv.class)
 	@GetMapping(value = { "/rdv" })
 	private ResponseEntity<List<Patient>> findAllWithRdv() {
 		return list();
@@ -67,18 +67,10 @@ public class PatientRestController {
 
     @JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
-	public ResponseEntity<Patient> findAllWithId(@PathVariable(name = "id") Integer id) {
+	public ResponseEntity<Patient> findById(@PathVariable(name = "id") Integer id) {
 		return findPatientById(id);
 	}
  
-    @JsonView(JsonViews.Common.class)
-    @GetMapping("/{id}/rdv")
-    public ResponseEntity<Patient> findByIdWithRdv(@PathVariable(name="id") Integer id) {
-        return findPatientById(id);
-    }
-
-
-
 	private ResponseEntity<Patient> findPatientById(Integer id) {
 		Optional<Patient> opt = patientRepository.findById(id);
 		if (opt.isPresent()) {
@@ -86,7 +78,8 @@ public class PatientRestController {
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-
+	
+	
 	@PutMapping("/{id}") // mise à jours du web service
 	public ResponseEntity<Void> Update(@PathVariable(name = "id") Integer id, @RequestBody Patient patient) {
 		Optional<Patient> opt = patientRepository.findById(id);

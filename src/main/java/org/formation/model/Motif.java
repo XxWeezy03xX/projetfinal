@@ -12,21 +12,29 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
+import org.formation.model.view.JsonViews;
+
+import com.fasterxml.jackson.annotation.JsonView;
+@SequenceGenerator(name="seq", initialValue=1)
 @Entity
 public class Motif {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="seq")
+	@JsonView(JsonViews.Common.class)
 	private Integer id;
+	@JsonView(JsonViews.Common.class)
 	private String motif;
+	@JsonView(JsonViews.Common.class)
 	private Integer prix;
-	//@ManyToOne(cascade = CascadeType.ALL)
-	@OneToOne
-	@JoinColumn(name = "motif_praticien")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JsonView(JsonViews.Common.class)
 	private Praticien praticien;
 	@OneToOne
 	@JoinColumn(name = " motif_rdv")
+	@JsonView(JsonViews.Common.class)
 	private Rdv rdv;
 
 	public Integer getId() {
@@ -74,10 +82,6 @@ public class Motif {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((motif == null) ? 0 : motif.hashCode());
-		result = prime * result + ((praticien == null) ? 0 : praticien.hashCode());
-		result = prime * result + ((prix == null) ? 0 : prix.hashCode());
-		result = prime * result + ((rdv == null) ? 0 : rdv.hashCode());
 		return result;
 	}
 
@@ -95,29 +99,7 @@ public class Motif {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (motif == null) {
-			if (other.motif != null)
-				return false;
-		} else if (!motif.equals(other.motif))
-			return false;
-		if (praticien == null) {
-			if (other.praticien != null)
-				return false;
-		} else if (!praticien.equals(other.praticien))
-			return false;
-		if (prix == null) {
-			if (other.prix != null)
-				return false;
-		} else if (!prix.equals(other.prix))
-			return false;
-		if (rdv == null) {
-			if (other.rdv != null)
-				return false;
-		} else if (!rdv.equals(other.rdv))
-			return false;
 		return true;
 	}
-	
-	
 	
 }

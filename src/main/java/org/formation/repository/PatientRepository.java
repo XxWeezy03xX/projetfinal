@@ -1,6 +1,7 @@
 package org.formation.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.formation.model.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,6 +13,9 @@ public interface PatientRepository extends JpaRepository<Patient, Integer>
 	public List<Patient> findAllCustom();
 	
 	public List<Patient> findByPrenomContaining(String prenom);
+	
+	//@Query("select p from Patient p where p.rdv in :rdv")
+	//public List<Patient> findByRdv();
 
 
 }

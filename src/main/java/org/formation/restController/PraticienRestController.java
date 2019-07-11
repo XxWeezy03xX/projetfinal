@@ -49,7 +49,7 @@ public class PraticienRestController
 		return list();
 	}
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.UserWithRdv.class)
 	@GetMapping(value= {"/rdv"})
 	public ResponseEntity<List<Praticien>> findAllWithRdv()
 	{
@@ -75,7 +75,7 @@ public class PraticienRestController
     }
     
     
-    @JsonView(JsonViews.Common.class)
+    @JsonView(JsonViews.UserWithRdv.class)
     @GetMapping("/{id}/rdv")
     public ResponseEntity<Praticien> findByIdWithRdv(@PathVariable(name="id") Integer id) {
         return findPraticienById(id);
@@ -96,11 +96,12 @@ public class PraticienRestController
     	 if(opt.isPresent())
     	{
     		 Praticien praticienEnBase = opt.get();
+    		 System.out.println(praticienEnBase);
     		 praticienEnBase.setPrenom((praticien.getPrenom() != null)? praticien.getPrenom():praticienEnBase.getPrenom());
     		 praticienEnBase.setNom((praticien.getNom() != null)? praticien.getNom():praticienEnBase.getNom());
     		 praticienEnBase.setAdresse(((praticien.getAdresse() != null)? praticien.getAdresse():praticienEnBase.getAdresse()));
-    		 //praticienEnBase.setRdvs(praticien.getRdvs());
-    		 praticienEnBase.setRdv(praticien.getRdv());
+    		 praticienEnBase.setRdvs(praticien.getRdvs());
+    		 //praticienEnBase.setRdv(praticien.getRdv());
     		 praticienRepository.save(praticienEnBase);
     		 return new ResponseEntity<>(HttpStatus.OK);
     		 

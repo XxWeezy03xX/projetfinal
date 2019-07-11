@@ -40,12 +40,6 @@ public class RdvRestController {
 		return list();
 	}
 	
-//	@JsonView(JsonViews.SoldatAvecArme.class)
-//	@GetMapping(value = {"arme"})
-//	private ResponseEntity<List<Rdv>> findAllWithArme(){
-//		return new ResponseEntity<List<Soldat>>(soldatRepository.findAll(), HttpStatus.OK);
-//	}
-	
 	private ResponseEntity<List<Rdv>> list() {
 		return new ResponseEntity<List<Rdv>>(rdvRepository.findAll(), HttpStatus.OK);
 	}
@@ -65,18 +59,12 @@ public class RdvRestController {
 	@GetMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
 	public ResponseEntity<Rdv> findById(@PathVariable(name="id") Integer id) {
-		return findById(id);
-	}
-	
-	@GetMapping("/{id}/rdv")
-	@JsonView(JsonViews.Common.class)
-	public ResponseEntity<Rdv> findByArme(@PathVariable(name="id") Integer id) {
-		return findById(id);
+		return findRdvById(id);
 	}
 	
 	@JsonView(JsonViews.Common.class)
-	public ResponseEntity<Rdv> findSoldatById(Integer id) {
-		Optional<Rdv> opt =rdvRepository.findById(id);
+	public ResponseEntity<Rdv> findRdvById(Integer id) {
+	Optional<Rdv> opt =rdvRepository.findById(id);
 		if(opt.isPresent()) {
 			return new ResponseEntity<Rdv>(opt.get(), HttpStatus.OK);
 		}
