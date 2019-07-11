@@ -4,8 +4,8 @@ import {Motif} from './motif';
 import {Adresse} from './adresse';
 
 export class Praticien extends User {
-  constructor(private _presentation?: string, private _moyen_paiement?: string, private _avis?: string, private _note?: number, private _motifs?: Motif[], private _rdv?: Rdv[],_id?: number, _nom?: string, _prenom?: string, _email?: string, _adresse?: Adresse[], ) {
-    super(_id, _nom, _prenom, _email, _adresse);
+  constructor(private _presentation?: string, private _moyen_paiement?: string, private _avis?: string, private _note?: number, private _motifs?: Motif[], private _rdv?: Rdv[],_id?: number, _password?: string, _nom?: string, _prenom?: string, _email?: string, _adresse?: Adresse[], ) {
+    super(_id, _password, _nom, _prenom, _email, _adresse);
   }
 
   get presentation(): string {
