@@ -19,9 +19,9 @@ import { InfoPatientComponent } from './info-patient/info-patient.component';
 import { FooterComponent } from './footer/footer.component';
 import {RouterModule} from '@angular/router';
 import {routes} from './routes';
-import { FormPraticienComponent } from './form-praticien/form-praticien.component';
 import { PraticienDetailConsultationComponent } from './praticien-detail-consultation/praticien-detail-consultation.component';
 import { PraticienDetailEditComponent } from './praticien-detail-edit/praticien-detail-edit.component';
+import { PraticienDetailEditionComponent } from './praticien-detail-edition/praticien-detail-edition.component';
 
 
 
@@ -35,9 +35,9 @@ import { PraticienDetailEditComponent } from './praticien-detail-edit/praticien-
     HeaderComponent,
     InfoPatientComponent,
     FooterComponent,
-    FormPraticienComponent,
     PraticienDetailConsultationComponent,
-    PraticienDetailEditComponent
+    PraticienDetailEditComponent,
+    PraticienDetailEditionComponent
 
   ],
   imports: [

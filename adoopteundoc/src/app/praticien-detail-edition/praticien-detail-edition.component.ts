@@ -1,18 +1,21 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Praticien} from '../model/praticien';
 import {PraticienService} from '../service/praticien.service';
+import {Adresse} from '../model/adresse';
 
 @Component({
-  selector: 'app-praticien-detail-edit',
-  templateUrl: './praticien-detail-edit.component.html',
-  styleUrls: ['./praticien-detail-edit.component.css']
+  selector: 'app-praticien-detail-edition',
+  templateUrl: './praticien-detail-edition.component.html',
+  styleUrls: ['./praticien-detail-edition.component.css']
 })
-export class PraticienDetailEditComponent implements OnInit {
+export class PraticienDetailEditionComponent implements OnInit {
 
   @Input('praticien')
   private p: Praticien;
+
   @Output()
   private showConsultation = new EventEmitter();
+
 
   constructor(private praticienService: PraticienService) { }
 
@@ -23,6 +26,7 @@ export class PraticienDetailEditComponent implements OnInit {
     this.praticienService.update(this.p).subscribe(res => {
       this.showConsultation.emit();
     });
+
   }
 
 }
