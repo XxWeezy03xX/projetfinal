@@ -5,16 +5,7 @@
 <td>{{p.presentation}}</td>
 <td>{{p.motifs}}</td>
 <td>{{p.moyen_paiement}}</td>
-<ng-container *ngIf="s.adresse !== null;else adresseNull">
-  <td>{{p.adresse.}}&nbsp;{{s.adresse.rue}}</td>
-  <td>{{p.adresse.cp}}</td>
-  <td>{{p.adresse.ville}}</td>
-</ng-container>
-<ng-template #adresseNull>
-  <td></td>
-  <td></td>
-  <td></td>
-</ng-template>
+
 <td>
   <button (click)="edition()" class="btn btn-outline-primary">editer</button>
 </td>

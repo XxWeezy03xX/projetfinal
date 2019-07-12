@@ -37,16 +37,9 @@ export class PatientDetailComponent implements OnInit {
   }
 
   public save() {
-
-    if (!this.pat.id) {
-      this.patientService.insert(this.pat).subscribe(res => {
-        this.patientRefresh.emit();
-      });
-    } else {
-      this.patientService.update(this.pat).subscribe(res => {
+     this.patientService.update(this.pat).subscribe(res => {
         this.consultation();
       });
-    }
   }
 
   public cancel() {
