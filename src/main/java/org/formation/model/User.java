@@ -47,8 +47,10 @@ public abstract class User
 	private String email;
 
 	@OneToMany(mappedBy = "user")
-	@JsonView(JsonViews.UserWithAdresse.class)
+	@JsonView(JsonViews.Common.class)
 	private List<Adresse> adresse =  new ArrayList<Adresse>();
+	@JsonView(JsonViews.Common.class)
+	private String username;
 	@JsonView(JsonViews.Common.class)
 	private String password;
 	private boolean enable;

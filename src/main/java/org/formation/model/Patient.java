@@ -32,8 +32,7 @@ public class Patient extends User {
 	private Integer secu;
 	
 	@OneToMany(mappedBy = "patient")
-	@JsonView(JsonViews.Common.class)
-	@JsonManagedReference
+	@JsonView(JsonViews.UserWithRdv.class)
 	private List<Rdv> listesRdv = new ArrayList<Rdv>();
 	
 	public Patient() {

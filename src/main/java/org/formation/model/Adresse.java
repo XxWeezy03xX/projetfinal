@@ -38,11 +38,8 @@ public class Adresse {
 	private String ville; 
 	 @ManyToOne
 	@JoinColumn(name = "adresse_user")
-	 @JsonBackReference
 	private User user; 
-	@JsonView(JsonViews.Common.class)
 	@OneToMany(mappedBy = "lieu")
-	 @JsonManagedReference
 	private List<Rdv> listeRdv = new ArrayList<Rdv>();
 	
 	public Adresse() {}

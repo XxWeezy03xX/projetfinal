@@ -26,27 +26,19 @@ public class Rdv {
 	private Integer id;
 	 @ManyToOne
 	@JoinColumn(name="rdv_patient")
-	 @JsonBackReference
-	 @JsonView(JsonViews.Common.class)
 	private Patient patient;
 	@ManyToOne
 	@JoinColumn(name = "rdv_praticien")
-	@JsonView(JsonViews.Common.class)
-	 @JsonBackReference
 	private Praticien praticien;
 	//@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	//@JoinColumn(name = "rdv_planning")
 //	private Planning date;
 	@ManyToOne
 	@JoinColumn(name = "rdv_motif")
-	//@Transient
-	@JsonBackReference
-	@JsonView(JsonViews.Common.class)
 	private Motif motif;
 	@ManyToOne
 	@JoinColumn(name = "rdv_lieu")
 	@JsonView(JsonViews.Common.class)
-	 @JsonBackReference
 	private Adresse lieu;
 	
 	public Rdv() {	
