@@ -35,11 +35,8 @@ public class Motif {
 	@ManyToOne
 	@JoinColumn(name="motif_praticien")
 	@JsonView(JsonViews.Common.class)
-	@JsonBackReference
 	private Praticien praticien;
 	@OneToMany(mappedBy = "motif")
-	@JsonView(JsonViews.Common.class)
-	@JsonManagedReference
 	private List<Rdv> listesRdv = new ArrayList<Rdv>();
 
 	public Integer getId() {

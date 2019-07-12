@@ -71,7 +71,7 @@ public class PatientRestController {
 		return findPatientById(id);
 	}
  
-    @JsonView(JsonViews.UserWithRdv.class)
+    @JsonView(JsonViews.Common.class)
     @GetMapping("/{id}/rdv")
     public ResponseEntity<Patient> findByIdWithRdv(@PathVariable(name="id") Integer id) {
         return findPatientById(id);

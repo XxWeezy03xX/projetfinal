@@ -31,13 +31,11 @@ public class Praticien extends User {
 	private Integer note;
 	@OneToMany(mappedBy = "praticien")
 	@JsonView(JsonViews.Common.class)
-	@JsonManagedReference
 	private List<Motif> motifs = new ArrayList<Motif>();
 //	@OneToOne
 //	@JoinColumn(name = "praticien_planning")
 //	private Planning planning; 
 	@OneToMany(mappedBy = "praticien")
-	@JsonManagedReference
 	@JsonView(JsonViews.Common.class)
 	private List<Rdv> rdvs = new ArrayList<Rdv>(); 
 	
