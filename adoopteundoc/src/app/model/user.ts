@@ -2,7 +2,7 @@ import {Adresse} from './adresse';
 
 export abstract class User {
 
-  constructor(private _id: number, private _password: string, private _email?: string, private _nom?: string, private _prenom?: string, public _adresse?: Adresse[]) {
+  constructor(private _id: number, private _password: string, private _email?: string, private _nom?: string, private _prenom?: string, private _adresse?: Adresse[]) {
   }
 
   get id(): number {
